@@ -1,0 +1,6 @@
+<h2>My Bookings</h2>
+<ul>
+    {% for booking in bookings %}
+    <li>Table {{ booking.table.table_number }} - {{ booking.booking_date }} at {{ booking.booking_time }}</li>
+    {% endfor %}
+</ul>
