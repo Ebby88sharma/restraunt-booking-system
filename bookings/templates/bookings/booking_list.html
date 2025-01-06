@@ -2,15 +2,16 @@
 
 {% block content %}
 <h2>My Bookings</h2>
-<ul id="booking-list">
+<ul>
     {% for booking in bookings %}
     <li>
-        <strong>Table {{ booking.table.table_number }}</strong> -
-        {{ booking.booking_date }} at {{ booking.booking_time }}
-        (Guests: {{ booking.guests }})
-        <button class="delete-btn" data-id="{{ booking.id }}">Cancel</button>
+        Table: {{ booking.table.name }}<br>
+        Date: {{ booking.booking_date }}<br>
+        Time: {{ booking.booking_time }}<br>
+        Guests: {{ booking.guests }}
     </li>
+    {% empty %}
+    <p>No bookings found. <a href="{% url 'create_booking' %}">Make a New Booking</a></p>
     {% endfor %}
 </ul>
-<a href="{% url 'create_booking' %}" class="button">Make a New Booking</a>
 {% endblock %}

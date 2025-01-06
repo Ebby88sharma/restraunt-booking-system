@@ -2,24 +2,28 @@
 
 {% block content %}
 <h2>Make a New Booking</h2>
-<form id="booking-form" method="POST">
+<form method="POST" class="booking-form">
     {% csrf_token %}
-    <label for="table_id">Table:</label>
-    <select name="table_id" id="table-id" required>
-        {% for table in tables %}
-        <option value="{{ table.id }}">Table {{ table.table_number }} (Capacity: {{ table.capacity }})</option>
-        {% endfor %}
-    </select>
-    <br>
-    <label for="booking_date">Date:</label>
-    <input type="date" name="booking_date" id="booking-date" required>
-    <br>
-    <label for="booking_time">Time:</label>
-    <input type="time" name="booking_time" id="booking-time" required>
-    <br>
-    <label for="guests">Guests:</label>
-    <input type="number" name="guests" id="guests" required>
-    <br>
-    <button type="submit">Book Table</button>
+    <div class="form-group">
+        <label for="table_id">Table:</label>
+        <select id="table_id" name="table_id">
+            {% for table in tables %}
+            <option value="{{ table.id }}">{{ table.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="booking_date">Date:</label>
+        <input type="date" id="booking_date" name="booking_date" required>
+    </div>
+    <div class="form-group">
+        <label for="booking_time">Time:</label>
+        <input type="time" id="booking_time" name="booking_time" required>
+    </div>
+    <div class="form-group">
+        <label for="guests">Guests:</label>
+        <input type="number" id="guests" name="guests" required>
+    </div>
+    <button type="submit" class="btn">Book Table</button>
 </form>
 {% endblock %}
