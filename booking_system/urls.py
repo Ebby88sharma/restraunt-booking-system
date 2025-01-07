@@ -20,10 +20,13 @@ from django.contrib.auth import views as auth_views  # Import auth_views
 
 from django.urls import path, include
 
+from bookings import views
+
 urlpatterns = [
+     path('', views.dashboard, name='dashboard'),  # Dashboard view
      path('admin/', admin.site.urls),
-    path('bookings/', include('bookings.urls')),  # Include bookings app URLs
-    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),  # Logout URL
+     path('bookings/', include('bookings.urls')),  # Include bookings app URLs
+     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),  # Logout URL
 
     path('', lambda request: redirect('booking_list')),
 ]

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center mb-4">
+    <h2 class="h4">Dashboard</h2>
+</div>
+<div class="jumbotron bg-light text-center py-5">
+    <h1 class="display-4">Welcome to the Restaurant Booking System!</h1>
+    <p class="lead">Easily manage table bookings and keep track of your reservations.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'create_booking' %}" role="button">Book a Table</a>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Tables</h5>
+                <p class="card-text display-4">{{ total_tables }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Bookings</h5>
+                <p class="card-text display-4">{{ total_bookings }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Your Bookings</h5>
+                <p class="card-text display-4">{{ user_bookings }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

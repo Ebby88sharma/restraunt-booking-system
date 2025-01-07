@@ -1,29 +1,49 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h2>Make a New Booking</h2>
-<form method="POST" class="booking-form">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="table_id">Table:</label>
-        <select id="table_id" name="table_id">
-            {% for table in tables %}
-            <option value="{{ table.id }}">{{ table.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="booking_date">Date:</label>
-        <input type="date" id="booking_date" name="booking_date" required>
-    </div>
-    <div class="form-group">
-        <label for="booking_time">Time:</label>
-        <input type="time" id="booking_time" name="booking_time" required>
-    </div>
-    <div class="form-group">
-        <label for="guests">Guests:</label>
-        <input type="number" id="guests" name="guests" required>
-    </div>
-    <button type="submit" class="btn">Book Table</button>
-</form>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Make a New Booking</h2>
+    <form method="POST" class="row g-3">
+        {% csrf_token %}
+
+        <div class="col-md-6">
+            <label for="table_id" class="form-label">Table</label>
+            <select id="table_id" name="table_id" class="form-select" required>
+                <option value="" disabled selected>Select a Table</option>
+                {% for table in tables %}
+                <option value="{{ table.id }}">{{ table }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        {% if message %}
+        <div class="alert alert-{{ message_type }}">
+            {{ message }}
+        </div>
+        {% endif %}
+
+
+        <div class="col-md-6">
+            <label for="booking_date" class="form-label">Date</label>
+            <input type="date" id="booking_date" name="booking_date" class="form-control" placeholder="YYYY-MM-DD"
+                required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="booking_time" class="form-label">Time</label>
+            <input type="time" id="booking_time" name="booking_time" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="guests" class="form-label">Guests</label>
+            <input type="number" id="guests" name="guests" class="form-control" min="1" placeholder="Number of Guests"
+                required>
+        </div>
+
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary mt-3">Book Table</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
