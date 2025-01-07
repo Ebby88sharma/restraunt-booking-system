@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.contrib.auth import views as auth_views  # Import auth_views
 
@@ -29,4 +30,5 @@ urlpatterns = [
      path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),  # Logout URL
 
     path('', lambda request: redirect('booking_list')),
+    path('api/hello/', lambda request: JsonResponse({'message': 'Hello from Django API!'})),
 ]
