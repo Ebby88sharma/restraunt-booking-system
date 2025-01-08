@@ -27,6 +27,7 @@ urlpatterns = [
      path('', views.dashboard, name='dashboard'),  # Dashboard view
      path('admin/', admin.site.urls),
      path('bookings/', include('bookings.urls')),  # Include bookings app URLs
+     path('login/', auth_views.LoginView.as_view(), name='login'),
      path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),  # Logout URL
 
     path('', lambda request: redirect('booking_list')),

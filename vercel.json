@@ -19,6 +19,10 @@
       "dest": "/staticfiles/$1"
     },
     {
+      "src": "/favicon.ico",
+      "dest": "/staticfiles/favicon.ico"
+    },
+    {
       "src": "/(.*)",
       "dest": "manage.py"
     }
