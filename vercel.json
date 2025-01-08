@@ -1,10 +1,19 @@
 {
   "version": 2,
   "builds": [
-    { "src": "restraunt-booking-system/wsgi.py", "use": "@vercel/python" }
+    {
+      "src": "manage.py",
+      "use": "@vercel/python"
+    }
   ],
   "routes": [
-    { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/(.*)", "dest": "restraunt-booking-system/wsgi.py" }
+    {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "manage.py"
+    }
   ]
 }
