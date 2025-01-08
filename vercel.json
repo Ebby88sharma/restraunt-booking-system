@@ -4,6 +4,10 @@
     {
       "src": "manage.py",
       "use": "@vercel/python"
+    },
+    {
+      "src": "staticfiles/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
