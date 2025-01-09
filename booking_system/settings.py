@@ -10,6 +10,9 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-default-key')
 DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='your-vercel-app.vercel.app,127.0.0.1,localhost').split(',')
 
+
+SECRET_KEY = config('nizpp5rk^vs_u6m^g-cnx5-5t&(r*0t5o$a4^_%&q2admf)7$g', default='fallback-secret-key')
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
